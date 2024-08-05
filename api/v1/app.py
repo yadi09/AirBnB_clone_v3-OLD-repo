@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ application file"""
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 
@@ -13,6 +13,11 @@ app.register_blueprint(app_views)
 def tear_down(exception):
     """ teardown """
     storage.close()
+
+@app.errorhandler(404)
+def not_found(err):
+    """not found"""
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == "__main__":
