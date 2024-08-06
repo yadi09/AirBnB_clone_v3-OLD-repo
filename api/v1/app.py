@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" application file"""
+'''application file contain Flask application API
+'''
 
 from flask import Flask, jsonify
 from models import storage
