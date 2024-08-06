@@ -13,12 +13,12 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def tear_down(exception):
-    """ teardown """
+    '''the flask teardown to close storage'''
     storage.close()
 
 @app.errorhandler(404)
 def not_found(err):
-    """not found"""
+    '''handle not found 404 http error code'''
     return jsonify({"error": "Not found"}), 404
 
 
